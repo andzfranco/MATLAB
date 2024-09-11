@@ -49,21 +49,13 @@ end
 wx = ifftshift(wx);
 wy = ifftshift(wy);
 
-figure; imagesc(dfdx); title('dfdx');
-figure; imagesc(dfdy); title('dfdy');
-
 % Fourier transforms of gradients
 
 dfdxfft = fft2(dfdx);
 dfdyfft = fft2(dfdy);
 
-figure; imagesc(log(abs(dfdxfft))); title('Magnitude of dfdxfft');
-figure; imagesc(log(abs(dfdyfft))); title('Magnitude of dfdyfft');
-
-% figure; imagesc(log(abs(dfdxfft))); title('Magnitude of dfdxfft');
-% figure; imagesc(angle(dfdxfft)); title('Phase of dfdxfft');
-% figure; imagesc(log(abs(dfdyfft))); title('Magnitude of dfdyfft');
-% figure; imagesc(angle(dfdyfft)); title('Phase of dfdyfft');
+figure; imagesc(abs(dfdxfft)); title('Magnitude of dfdxfft');
+figure; imagesc(abs(dfdyfft)); title('Magnitude of dfdyfft');
 
 % Integrate in the frequency domain by phase shifting by pi/2 and weighting
 % the Fourier coefficients by their frequencies in x and y and then
