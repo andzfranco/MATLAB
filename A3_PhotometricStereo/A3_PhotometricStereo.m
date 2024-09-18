@@ -31,10 +31,11 @@ images = load('Photos.mat');
 disp(images);
 I1 = images.I1; I2 = images.I2; I3 = images.I3; I4 = images.I4;
 figure(1); 
-subplot(2, 2, 1); imagesc(I1);
-subplot(2, 2, 2); imagesc(I2);
-subplot(2, 2, 3); imagesc(I3);
-subplot(2, 2, 4); imagesc(I4);
+subplot(2, 2, 1); imagesc(I1); axis off;
+subplot(2, 2, 2); imagesc(I2); axis off;
+subplot(2, 2, 3); imagesc(I3); axis off;
+subplot(2, 2, 4); imagesc(I4); axis off;
+tight_subplot(2,2, [0.05, 0.05]);
 colormap(gray);
 
 n_imagesize = size(I1);
@@ -67,7 +68,7 @@ set(h,'fontsize',14);
 
 figure(3); 
 mesh(-n_f);
-title('3D Spherical Surface');
+%title('3D Spherical Surface');
 xlabel('X-axis (px)');
 ylabel('Y-axis (px)');
 zlabel('Depth (px)');
@@ -128,9 +129,19 @@ title('surface normal')
 colormap(gray);
 
 figure(8); 
-mesh(-data_f);
-title('3D Turtle');
-colormap('turbo');
+subplot(1, 2, 1); mesh(data_f); colormap("turbo");
+set(gca,'FontSize',13);
+xlabel('X-axis (px)');
+ylabel('Y-axis (px)');
+zlabel('Depth (px)');
+
+subplot(1, 2, 2); imagesc(data_f); colormap("turbo"); set(gca, 'XDir', 'reverse');
+set(gca,'FontSize',13)
+h=colorbar;
+set(h,'fontsize',14);
+xlabel('X-axis (px)');
+ylabel('Y-axis (px)');
+ylabel(h,'Depth (px)','FontSize',14,'Rotation',270)
 
 figure(9); imagesc(data_dfdx); title('dfdx turtle');
 set(gca,'FontSize',13)
@@ -143,13 +154,13 @@ set(h,'fontsize',14);
 
 %Frankot Chellappa
 data_fc = frankotChellappa(data_dfdx, data_dfdy);
-figure(11); subplot(1, 2, 1); mesh(-data_fc); colormap("turbo");
+figure(11); subplot(1, 2, 1); mesh(data_fc); colormap("turbo");
 set(gca,'FontSize',13);
 xlabel('X-axis (px)');
 ylabel('Y-axis (px)');
 zlabel('Depth (px)');
 
-subplot(1, 2, 2); imagesc(-data_fc); colormap("turbo"); set(gca, 'XDir', 'reverse');
+subplot(1, 2, 2); imagesc(data_fc); colormap("turbo"); set(gca, 'XDir', 'reverse');
 set(gca,'FontSize',13)
 h=colorbar;
 set(h,'fontsize',14);
