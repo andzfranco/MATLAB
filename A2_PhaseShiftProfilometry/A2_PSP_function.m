@@ -52,8 +52,8 @@ function Zw = get_phase(obj_images, ref_images, x, y, l, w, freq, rotation_angle
     set(h,'fontsize',14);
     set(gca,'FontSize',13);
 %% Unwrap phase 
-    uo = unwrap_TIE_FFT_DCT_iter(wrapped_object);
-    ub = unwrap_TIE_FFT_DCT_iter(wrapped_bg);
+    uo = unwrap(wrapped_object);
+    ub = unwrap(wrapped_bg);
     figure(4);imagesc(uo);
     figure(5); imagesc(ub);
 %% Plot the unwrapped phase as a 3D surface
@@ -229,9 +229,9 @@ l_5 = 400;  % Width
 w_5 = 300;  % Height
 
 %% Use function
-%Zw_0 = get_phase(obj_images_0, ref_images_0, x_0, y_0, l_0, w_0, 3, 0);
+Zw_0 = get_phase(obj_images_0, ref_images_0, x_0, y_0, l_0, w_0, 3, 0);
 %Zw_1 = get_phase(obj_images_1, ref_images_1, x_1, y_1, l_1, w_1, 3, 0);
 %Zw_2 = get_phase(obj_images_2, ref_images_2, x_2, y_2, l_2, w_2, 50, 0);
-Zw_3 = get_phase(obj_images_3, ref_images_3, x_3, y_3, l_3, w_3, 4, 0);
+%Zw_3 = get_phase(obj_images_3, ref_images_3, x_3, y_3, l_3, w_3, 4, 0);
 %Zw_4 = get_phase(obj_images_4, ref_images_4, x_4, y_4, l_4, w_4, 50, 0);
 %Zw_5 = get_phase(obj_images_5, ref_images_5, x_5, y_5, l_5, w_5, 50, 0);
